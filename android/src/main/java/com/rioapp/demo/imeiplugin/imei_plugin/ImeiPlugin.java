@@ -27,6 +27,8 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 
+import com.github.gzuliyujiang.oaid.DeviceIdentifier;
+
 /**
  * ImeiPlugin
  */
@@ -127,6 +129,32 @@ public class ImeiPlugin implements FlutterPlugin, PluginRegistry.RequestPermissi
         result.success(getUUID(context));
     }
 
+    private static void getOAID(Activity activity, Result result) {
+        // 获取OAID/AAID，同步调用
+        String OAID = DeviceIdentifier.getOAID(activity);
+        result.success(OAID);
+    }
+
+    private static void getGUID(Activity activity, Result result) {
+        // 获取GUID，随机生成，不会为空
+        String GUID = DeviceIdentifier.getGUID(activity);
+        result.success(GUID);
+    }
+
+    private static void getWidevineID(Activity activity, Result result) {
+        // 获取数字版权管理ID，可能为空
+        String _result = DeviceIdentifier.getWidevineID();
+        result.success(_result);
+    }
+
+    private static void getPseudoID(Activity activity, Result result) {
+        // 获取伪造ID，根据硬件信息生成，不会为空，有大概率会重复
+        String _result = DeviceIdentifier.getPseudoID();
+        result.success(_result);
+    }
+
+
+
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
         channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "imei_plugin");
@@ -149,6 +177,14 @@ public class ImeiPlugin implements FlutterPlugin, PluginRegistry.RequestPermissi
             getImeiMulti(activity, result);
         else if (call.method.equals("getId"))
             getID(activity, result);
+        else if (call.method.equals("getOAID"))
+            getOAID(activity, result);
+        else if (call.method.equals("getGUID"))
+            getGUID(activity, result);
+        else if (call.method.equals("getWidevineID"))
+            getWidevineID(activity, result);
+        else if (call.method.equals("getPseudoID"))
+            getPseudoID(activity, result);
         else
             mResult.notImplemented();
     }

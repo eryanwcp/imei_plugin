@@ -13,6 +13,9 @@
   if ([@"getImei" isEqualToString:call.method]) {
     NSUUID *identifierForVendor = [[UIDevice currentDevice] identifierForVendor];
     result([identifierForVendor UUIDString]);
+  } else if ([@"getImeiMulti" isEqualToString:call.method]) {
+     NSUUID *identifierForVendor = [[UIDevice currentDevice] identifierForVendor];
+     result([identifierForVendor UUIDString]);
   } else {
     result(FlutterMethodNotImplemented);
   }
