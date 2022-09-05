@@ -242,6 +242,7 @@ public class ImeiPlugin implements FlutterPlugin, PluginRegistry.RequestPermissi
     @Override
     public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
         this.activity = binding.getActivity();
+        DeviceIdentifier.register(this.activity);
         binding.addRequestPermissionsResultListener(this);
 
     }
@@ -289,6 +290,7 @@ public class ImeiPlugin implements FlutterPlugin, PluginRegistry.RequestPermissi
     @Override
     public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding binding) {
         this.activity = binding.getActivity();
+        DeviceIdentifier.register(this.activity);
         binding.addRequestPermissionsResultListener(this);
 
     }
