@@ -1,3 +1,4 @@
+group 'com.rioapp.demo.imeiplugin.imei_plugin'
 version '1.0'
 
 buildscript {
@@ -23,7 +24,9 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    namespace 'com.rioapp.demo.imeiplugin.imei_plugin'
+    if (project.android.hasProperty("namespace")) {
+        namespace = "com.rioapp.demo.imeiplugin.imei_plugin"
+    }
     compileSdkVersion 30
 
     compileOptions {
