@@ -27,7 +27,7 @@ android {
     if (project.android.hasProperty("namespace")) {
         namespace = "com.rioapp.demo.imeiplugin.imei_plugin"
     }
-    compileSdkVersion 30
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
     }
 
     dependencies {
