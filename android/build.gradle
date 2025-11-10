@@ -39,6 +39,6 @@ android {
     }
 
     dependencies {
-        implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.5.1'
+        implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.12'
     }
 }
