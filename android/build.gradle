@@ -6,6 +6,9 @@ buildscript {
         google()
         mavenCentral()
         maven { url 'https://www.jitpack.io' }
+        // 华为官方广告标识服务SDK
+        maven { url 'https://developer.huawei.com/repo' }
+        // 荣耀官方广告标识服务SDK
         maven { url 'https://developer.hihonor.com/repo' }
     }
 
@@ -19,6 +22,9 @@ rootProject.allprojects {
         google()
         mavenCentral()
         maven { url 'https://www.jitpack.io' }
+        // 华为官方广告标识服务SDK
+        maven { url 'https://developer.huawei.com/repo' }
+        // 荣耀官方广告标识服务SDK
         maven { url 'https://developer.hihonor.com/repo' }
     }
 }
@@ -42,5 +48,7 @@ android {
 
     dependencies {
         implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.17'
+        runtimeOnly "com.huawei.hms:ads-identifier:3.4.62.300"
+        runtimeOnly "com.hihonor.mcs:ads-identifier:1.0.2.301"
     }
 }
